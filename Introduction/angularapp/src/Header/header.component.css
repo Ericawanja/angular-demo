@@ -1,0 +1,11 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(243, 4, 4);
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
