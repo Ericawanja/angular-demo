@@ -4,6 +4,18 @@
   <img [src]="src" alt="" angular />
 
   <button [disabled]="disabled" (click)="Save()">Submit</button>
-  <input (input) ="change($event)"/>
+  <input (input)="change($event)" />
 
+  <input [(ngModel)]="text" />
+
+  <!-- Directives -->
+  <!-- Class attribute -->
+
+
+  <div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
+  <button (click)="toggleClass()">Toogle Class</button>
+  <!-- ngStyle -->
+
+  <div [ngStyle]="currentStyles">This div contains dynamic styles</div>
+  <div [ngClass] ="{legal:isLegal}">Checking the boolean class</div>
 </div>

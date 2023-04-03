@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from 'src/Footer/footer.component';
 import { HeaderComponent } from 'src/Header/header.component';
@@ -14,7 +15,8 @@ import { BodyComponent } from './body/body.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
