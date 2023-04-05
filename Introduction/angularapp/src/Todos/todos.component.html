@@ -1,4 +1,16 @@
-<div *ngIf="todo">
+<div *ngIf="todo.completed; else uncompleted" >
     <h1>Todos component</h1>
     <p>{{todo.todo}}</p>
+    <p>{{todo.completed}}</p>
 </div>
+<ng-template #uncompleted>
+    <p>{{todo.todo}}</p>
+    <p>{{todo.completed}}</p>
+
+</ng-template>
+
+<Button (click)="update()">show Paragraph</Button>
+<div >
+
+</div>
+<a #input ></a>

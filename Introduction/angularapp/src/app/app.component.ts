@@ -8,7 +8,7 @@ import { Todo } from '../interfaces/index';
 })
 export class AppComponent {
   title = 'angularapp';
-
+  content=''
   todos :Todo[]= [
     {
       id: 1,
@@ -49,4 +49,8 @@ export class AppComponent {
       userId: 13,
     },
   ];
+
+  updateParagraph(event:string){
+    this.content=event
+  }
 }

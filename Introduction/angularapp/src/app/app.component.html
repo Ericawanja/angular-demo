@@ -1,2 +1,3 @@
 <h1>Hello there</h1>
-<todos-component *ngFor="let todo of todos" [todo] = "todo"></todos-component>
+<todos-component *ngFor="let todo of todos" [todo]="todo" (updateText)="updateParagraph($event)" ></todos-component>
+<p>{{content}}</p>
