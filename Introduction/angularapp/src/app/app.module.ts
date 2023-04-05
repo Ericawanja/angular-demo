@@ -7,6 +7,7 @@ import { HeaderComponent } from 'src/Header/header.component';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
 import { TodosComponent } from 'src/Todos/todos.component';
+import { Shorten } from 'src/shorten';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TodosComponent } from 'src/Todos/todos.component';
     HeaderComponent,
     BodyComponent,
     FooterComponent,
-    TodosComponent
+    TodosComponent,
+    Shorten
   ],
   imports: [
     BrowserModule,
