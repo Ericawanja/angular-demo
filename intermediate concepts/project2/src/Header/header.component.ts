@@ -1,14 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewChildren } from "@angular/core";
 import { Todo } from "src/interfaces";
 
-@Component({
+@Component  ({
     selector:"header",
     templateUrl:"header.component.html",
     styleUrls:["header.component.css"]
 })
 
-export class HeaderComponent{
+export class HeaderComponent implements OnInit, OnChanges{
     componentName = 'Header'
+   @Input() message!:string
+   @ViewChildren('child') header!: ElementRef
+   @ViewChild('TemplateRef') template
+  
     todos :Todo[]= [
         {
           id: 1,
@@ -49,5 +53,30 @@ export class HeaderComponent{
           userId: 13,
         },
       ];
+      constructor(){
+
+      }
+      ngOnInit(): void {
+          console.log('The on it hook running')
+          console.log(this.template)
+      }
+      ngOnChanges(changes: SimpleChanges): void {
+          console.log("the onchange method runnin")
+          console.log(changes)
+      }
+      ngDoCheck(){
+        console.log('ngDocheck called')
+      }
+      ngAfterContentInit(){
+        console.log(" ngAfterContentInit The content has been initialized")
+
+      }
+      ngAfterContentChecked(){
+        console.log(" ngAfterContentChecked The content has been checked")
+      }
+      ngAfterViewInit(){
+        console.log(this.header)
+
+      }
 
 }

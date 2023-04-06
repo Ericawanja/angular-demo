@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project2';
+  message = "the input message from the app"
+  ChangeMessage(){
+    this.message = "new message"
+  }
 }
