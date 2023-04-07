@@ -1,21 +1,25 @@
 <h1>{{ componentName }}</h1>
 <div>
   {{message}}
-  <!-- <div *ngFor="let todo of todos; let i = index">
+  <div>
+    
+   
+  </div>
+  <div *ngFor="let todo of todos; let i = index">
     <div *ngIf="todo.completed; else uncompleted">
       <h2>{{ todo.todo }}</h2>
       <p>Completed: {{ todo.completed }}</p>
     </div>
     <ng-template #uncompleted>
-        <div *ngFor="let todo of todos; let i = index">
+        <!-- <div *ngFor="let todo of todos; let i = index">
             <div *ngIf="todo.completed>
               <h2>{{ todo.todo }}</h2>
               <p>Completed: {{ todo.completed }}</p>
             </div>
-        </div>
+        </div> -->
         <h1>incomplete {{todo.todo}}</h1>
     </ng-template>
-  </div> -->
+  </div>
 </div>
 <ng-content></ng-content>
 
