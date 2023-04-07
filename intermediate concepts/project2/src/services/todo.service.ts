@@ -44,7 +44,9 @@ export class TodosService{
         },
       ];
     addTodo(todo:Todo){
+        
         this.todos.push(todo)
+        console.log(this.todos)
     }
     getTodo(){
         return this.todos

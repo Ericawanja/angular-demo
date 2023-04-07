@@ -17,7 +17,7 @@ import { TodosService } from 'src/services/todo.service';
   selector: 'header',
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.css'],
-  providers: [LoggingService, TodosService],
+  providers: [LoggingService],
 })
 export class HeaderComponent implements OnInit, OnChanges {
   componentName = 'Header';
