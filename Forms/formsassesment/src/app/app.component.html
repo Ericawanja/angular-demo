@@ -2,7 +2,7 @@
   <form  (ngSubmit)="handleSubmit(email)" #form="ngForm">
     <div class="form-group">
       <label for="email">Enter your email address</label>
-      <input name="email" type="email" ngModel #email="ngModel" required/>
+      <input name="email" type="email" ngModel #email="ngModel" email required/>
       <p *ngIf="!email.valid && email.touched">Enter valid email</p>
     </div>
     <div class="form-group">
@@ -17,6 +17,7 @@
       <label for="password">Enter your password</label>
       <input type="password" required ngModel name="password">
     </div>
+    <p *ngIf="!form.valid && form.touched">The form is invalid</p>
     <div>
       <button [disabled]="!form.valid" type="submit">Submit</button>
     </div>

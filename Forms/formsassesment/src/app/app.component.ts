@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'formsassesment';
-  handleSubmit(){
-    console.log('submitting')
+  @ViewChild('form') data!:NgForm
+  @ViewChild('email') email!:ElementRef
+  default='advanced'
+  handleSubmit(em:any){
+    console.log(this.data.value)
+    console.log(this.email, em.valid)
   }
 }
+
