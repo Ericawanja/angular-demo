@@ -1,0 +1,20 @@
+<div class="form-container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label> Name: </label>
+      <input formControlName="name" placeholder="Your name" />
+      <p *ngIf="myForm.get('name')!.invalid && myForm.get('name')!.touched">Please enter the name</p>
+    </div>
+    <div class="form-group">
+      <label> Email: </label>
+      <input formControlName="email" placeholder="Your email" />
+    </div>
+    <div class="form-group">
+      <label> Message: </label>
+      <input formControlName="message" placeholder="Your message"  />
+    </div>
+    <div>
+    <button type="submit">Send</button>
+  </div>
+  </form>
+</div>
