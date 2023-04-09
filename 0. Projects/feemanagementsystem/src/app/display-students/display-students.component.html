@@ -1,1 +1,16 @@
-<p>display-students works!</p>
+<h3>Students Data</h3>
+
+<table class="students">
+  <tr>
+    <th>Registration no</th>
+    <th>Student name</th>
+    <th>Paid</th>
+    <th>Balance</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.paid }}</td>
+    <td>0</td>
+  </tr>
+</table>
