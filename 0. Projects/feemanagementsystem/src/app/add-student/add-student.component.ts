@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-student.component.css']
 })
 export class AddStudentComponent {
+  genders:string[] =[
+    'male', 'female'
+  ]
 
 }

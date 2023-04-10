@@ -1,1 +1,17 @@
-<p>add-student works!</p>
+<h3>Students Form</h3>
+<form>
+    <div>
+        <label for="name">Enter students name</label>
+    <input type="text" id="name" name="name" Ng-model>
+    </div>
+    <div>
+        <p>Select your gender</p>
+        <div *ngFor="let gender of genders">
+            <label for={{gender}}>{{gender}}</label>
+            <input type="radio" value={{gender}}>
+
+            <label for={{gender}}>{{gender}}</label>
+            <input type="radio" value={{gender}}>
+        </div>
+    </div>
+</form>
