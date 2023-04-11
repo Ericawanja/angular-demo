@@ -1,17 +1,19 @@
-<h3>Students Form</h3>
-<form>
-    <div>
-        <label for="name">Enter students name</label>
-    <input type="text" id="name" name="name" Ng-model>
+<div class="studentsForm" >
+  <h3>Students Form</h3>
+  <form #studentRegistrationform="ngForm" (ngSubmit)="handleSubmit()">
+    <div class="textInput">
+      <label for="name">Enter students name</label>
+      <input type="text" id="name" name="name" ngModel required/>
     </div>
     <div>
-        <p>Select your gender</p>
-        <div *ngFor="let gender of genders">
-            <label for={{gender}}>{{gender}}</label>
-            <input type="radio" value={{gender}}>
-
-            <label for={{gender}}>{{gender}}</label>
-            <input type="radio" value={{gender}}>
-        </div>
+      <p>Select your gender</p>
+      <div class="genderRadios" *ngFor="let gender of genders">
+        <input type="radio" value="{{ gender }}" ngModel required  name="gender"/>
+        <label for="{{ gender }}">{{ gender }}</label>
+      </div>
+      <div class="submit">
+        <button type="submit"  [disabled]="studentRegistrationform.invalid">Submit</button>
+      </div>
     </div>
-</form>
+  </form>
+</div>
