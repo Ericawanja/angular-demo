@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/services/posts.service';
+import { TransformResponse } from './responseTransform.pipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [TransformResponse],
 })
 export class AppComponent implements OnInit {
   title = 'postsApp';
@@ -12,13 +14,16 @@ export class AppComponent implements OnInit {
   errorMessage: any;
   posts: any;
 
-  constructor(private postsService: PostService) {}
+  constructor(
+    private postsService: PostService,
+    private formatData: TransformResponse
+  ) {}
   public getPosts() {
     this.loading = true;
     this.postsService.getPosts().subscribe(
       (response) => {
-        console.log(response.posts);
-        this.posts = response.posts;
+    
+        this.posts = this.formatData.transform(response);
       },
       (error) => {
         this.errorMessage = error;
@@ -32,6 +37,6 @@ export class AppComponent implements OnInit {
     );
   }
   ngOnInit(): void {
-    this.getPosts()
+    this.getPosts();
   }
 }

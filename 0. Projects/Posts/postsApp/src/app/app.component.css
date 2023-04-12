@@ -17,13 +17,13 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  margin-bottom: 30px;
 }
 .menu span {
   padding-right: 20px;
   cursor: pointer;
 }
-.postList {
-}
+
 .post {
   margin: auto;
   width: 80%;

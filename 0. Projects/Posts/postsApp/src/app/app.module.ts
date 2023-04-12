@@ -5,11 +5,13 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DisplayPostsComponent } from './display-posts/display-posts.component';
+import { TransformResponse } from './responseTransform.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayPostsComponent
+    DisplayPostsComponent,
+    TransformResponse
   ],
   imports: [
     BrowserModule,

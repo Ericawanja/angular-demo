@@ -8,6 +8,6 @@ import { Observable } from 'rxjs';
 export class PostService {
   constructor(public http: HttpClient) {}
   getPosts(): Observable<any> {
-    return this.http.get('https://dummyjson.com/posts');
+    return this.http.get('https://posts-732d2-default-rtdb.firebaseio.com/posts.json');
   }
 }
