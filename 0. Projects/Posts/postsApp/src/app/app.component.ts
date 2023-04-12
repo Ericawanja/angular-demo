@@ -18,11 +18,10 @@ export class AppComponent implements OnInit {
     private postsService: PostService,
     private formatData: TransformResponse
   ) {}
-  public getPosts() {
+  getPosts() {
     this.loading = true;
     this.postsService.getPosts().subscribe(
       (response) => {
-    
         this.posts = this.formatData.transform(response);
       },
       (error) => {
@@ -38,5 +37,20 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getPosts();
+  }
+  handleDelete(id: string): void {
+    this.loading = true;
+    this.postsService.deletePosts(id).subscribe(
+      (response) => {
+        this.getPosts();
+      },
+      (error) => {
+        this.loading = false;
+        this.errorMessage = error;
+      },
+      () => {
+        this.loading = false;
+      }
+    );
   }
 }

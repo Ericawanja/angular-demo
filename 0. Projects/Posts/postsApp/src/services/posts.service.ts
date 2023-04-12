@@ -6,8 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PostService {
+  BASEURL: string = 'https://posts-732d2-default-rtdb.firebaseio.com';
   constructor(public http: HttpClient) {}
   getPosts(): Observable<any> {
-    return this.http.get('https://posts-732d2-default-rtdb.firebaseio.com/posts.json');
+    return this.http.get(`${this.BASEURL}/posts.json`);
+  }
+  deletePosts(id: string): Observable<any> {
+    console.log('deleting....', id)
+    return this.http.delete(`${this.BASEURL}/posts/${id}.json`);
   }
 }
