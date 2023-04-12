@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/services/posts.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { PostService } from 'src/services/posts.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'postsApp';
   loading: boolean = false;
   errorMessage: any;
@@ -17,8 +17,8 @@ export class AppComponent {
     this.loading = true;
     this.postsService.getPosts().subscribe(
       (response) => {
-        console.log(response);
-        this.posts = response;
+        console.log(response.posts);
+        this.posts = response.posts;
       },
       (error) => {
         this.errorMessage = error;
@@ -30,5 +30,8 @@ export class AppComponent {
         console.log('The request completed');
       }
     );
+  }
+  ngOnInit(): void {
+    this.getPosts()
   }
 }
