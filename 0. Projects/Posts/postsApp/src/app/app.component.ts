@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostService } from 'src/services/posts.service';
 import { TransformResponse } from './responseTransform.pipe';
+import { NgForm, NgModel } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TransformResponse],
+  providers: [TransformResponse, DatePipe],
 })
 export class AppComponent implements OnInit {
   title = 'postsApp';
   loading: boolean = false;
   errorMessage: any;
   posts: any;
+  @ViewChild('postForm') form!:NgForm
 
   constructor(
     private postsService: PostService,
-    private formatData: TransformResponse
+    private formatData: TransformResponse,
+    private date :DatePipe
   ) {}
   getPosts() {
     this.loading = true;
@@ -52,5 +56,17 @@ export class AppComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+  handlePostSubmit(){
+    let date = this.date.transform(new Date(), 'mediumDate')
+    let id= Math.floor(Math.random() * 100)
+    let title =this.form.value
+    this.postsService.postData({id, date, ...title}).subscribe(
+      (res)=>{
+        this.getPosts()
+      },
+      (error)=>{},
+      ()=>{}
+    )
   }
 }

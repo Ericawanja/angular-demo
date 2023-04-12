@@ -37,6 +37,13 @@
       </div>
     </div>
   </div>
+  <form #postForm="ngForm" (ngSubmit)="handlePostSubmit()">
+    <label for="title">Enter the post details</label>
+    <input type="text" ngModel name="title">
+    <div>
+      <button type="submit">Save</button>
+    </div>
+  </form>
 </div>
 
 
