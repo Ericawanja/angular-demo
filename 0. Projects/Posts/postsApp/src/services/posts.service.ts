@@ -17,12 +17,20 @@ export class PostService {
     return this.http.delete(`${this.BASEURL}/posts/${id}.json`);
   }
   postData(data: Ipost): Observable<any> {
-    console.log(data);
     const headers = { 'content-type': 'application/json' };
     return this.http.post(
       `${this.BASEURL}/posts.json`,
       { ...data },
       { headers: headers }
+    );
+  }
+  editPost(data: Ipost): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    console.log(data)
+    return this.http.put(
+      `${this.BASEURL}/posts/${data.id}.json`,
+      { title: data.title, date: data.date },
+      { headers }
     );
   }
 }

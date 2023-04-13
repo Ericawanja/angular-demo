@@ -3,6 +3,7 @@ import { PostService } from 'src/services/posts.service';
 import { TransformResponse } from './responseTransform.pipe';
 import { NgForm, NgModel } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { Ipost } from 'src/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +13,18 @@ import { DatePipe } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'postsApp';
+  editing = false;
   loading: boolean = false;
   errorMessage: any;
   posts: any;
-  @ViewChild('postForm') form!:NgForm
+  temp!: Ipost;
+  tempValue: string = '';
+  @ViewChild('postForm') form!: NgForm;
 
   constructor(
     private postsService: PostService,
     private formatData: TransformResponse,
-    private date :DatePipe
+    private date: DatePipe
   ) {}
   getPosts() {
     this.loading = true;
@@ -57,16 +61,37 @@ export class AppComponent implements OnInit {
       }
     );
   }
-  handlePostSubmit(){
-    let date = this.date.transform(new Date(), 'mediumDate')
-    let id= Math.floor(Math.random() * 100)
-    let title =this.form.value
-    this.postsService.postData({id, date, ...title}).subscribe(
-      (res)=>{
-        this.getPosts()
-      },
-      (error)=>{},
-      ()=>{}
-    )
+  handlePostSubmit() {
+    if (!this.editing) {
+      let date = this.date.transform(new Date(), 'mediumDate');
+      let id = Math.floor(Math.random() * 100);
+      let title = this.form.value;
+      this.tempValue =" "
+      this.postsService.postData({ id, date, ...title }).subscribe(
+        (res) => {
+          
+          this.getPosts();
+        },
+        (error) => {},
+        () => {}
+      );
+    } else {
+      let data:Ipost = {...this.temp, title:this.form.value.title }
+      this.postsService.editPost(data).subscribe(
+        (res) => {
+          this.getPosts();
+          this.editing= false
+          this.tempValue =''
+          
+        },
+        (error) => {},
+        () => {}
+      );
+    }
+  }
+  handleEdit(post: Ipost) {
+    this.temp = post;
+    this.editing = true;
+    this.tempValue = post.title;
   }
 }
