@@ -89,6 +89,7 @@ export class AppComponent implements OnInit {
       );
     }
   }
+  
   handleEdit(post: Ipost) {
     this.temp = post;
     this.editing = true;
